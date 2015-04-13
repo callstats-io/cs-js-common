@@ -14,4 +14,11 @@ Javascript code for some common utilities to be shared amongst csio projects.
 
 ## Tests
 
+```shell
   npm test
+```
+
+## Contributing
+
+In lieu of a formal styleguide, take care to maintain the existing coding style.
+Add unit tests for any new or changed functionality. Lint and test your code.
