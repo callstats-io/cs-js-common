@@ -1,0 +1,30 @@
+{
+  "name": "cs-js-common",
+  "version": "0.1.0",
+  "description": "A common utility library for node projects within csio.",
+  "main": "index.js",
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:callstats-io/cs-js-common.git"
+  },
+  "keywords": [
+    "csio",
+    "common"
+  ],
+  "author": "support@callstats.io",
+  "license":  {
+    "type": "MIT",
+    "url": "https://github.com/brentertz/scapegoat/blob/master/LICENSE-MIT"
+  },
+  "bugs": {
+    "url": "https://github.com/callstats-io/cs-js-common/issues"
+  },
+  "homepage": "https://github.com/callstats-io/cs-js-common"
+}
