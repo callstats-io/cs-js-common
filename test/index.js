@@ -47,3 +47,28 @@ describe('#stringify', function() {
 
 
 });
+
+describe('#isReallyTrue', function() {
+  it('treat true boolean as true', function() {
+    cs_utils.isReallyTrue(true).should.equal(true);
+  })
+
+  it('treat true string as true', function() {
+    cs_utils.isReallyTrue('true').should.equal(true);
+    cs_utils.isReallyTrue('True').should.equal(true);
+    cs_utils.isReallyTrue('TRUE').should.equal(true);
+
+  })
+
+  it('everything else is not true', function() {
+    cs_utils.isReallyTrue('1').should.equal(false);
+    cs_utils.isReallyTrue(1).should.equal(false);
+    cs_utils.isReallyTrue(null).should.equal(false);
+    cs_utils.isReallyTrue(undefined).should.equal(false);
+
+    var someObject = {'a': 'b'};
+    cs_utils.isReallyTrue(someObject).should.equal(false);
+
+
+  })
+})
