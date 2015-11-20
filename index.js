@@ -16,8 +16,20 @@ function stringify (anObj) {
     }
 }
 
+/**
+* check if the value really an boolean value or a string of value 'true'
+*/
+function isReallyTrue(anObj) {
+    if (isString(anObj)) {
+        return (anObj.toLowerCase() === 'true');
+    }
+
+    return (anObj === true);
+}
+
 module.exports = {
   isString: isString,
-  stringify: stringify
+  stringify: stringify,
+  isReallyTrue: isReallyTrue
 };
 
