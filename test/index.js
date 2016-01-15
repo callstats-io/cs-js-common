@@ -71,4 +71,56 @@ describe('#isReallyTrue', function() {
 
 
   })
-})
+});
+
+describe("#originMatch", function() {
+  it('matches "https://foo.bar.com" to "https://foo.bar.com"', function () {
+    cs_utils.originMatch("https://foo.bar.com", "https://foo.bar.com").should.equal(true);
+  });
+
+  it('does not match "https://foo2.bar.com" to "https://foo.bar.com"', function () {
+    cs_utils.originMatch("https://foo2.bar.com", "https://foo.bar.com").should.equal(false);
+  });
+
+  it('matches "https://foo.bar.com" to ["https://foo.bar.com"]', function () {
+    cs_utils.originMatch("https://foo.bar.com", ["https://foo.bar.com"]).should.equal(true);
+  });
+
+  it('matches "https://foo.bar.com" to ["https://bar.com", "https://foo.bar.com"]', function () {
+    cs_utils.originMatch("https://foo.bar.com", ["https://bar.com", "https://foo.bar.com"]).should.equal(true);
+  });
+
+  it('does not match "https://foo2.bar.com" to ["https://foo.bar.com"]', function () {
+    cs_utils.originMatch("https://foo2.bar.com", ["https://foo.bar.com"]).should.equal(false);
+  });
+
+  it('does not match "https://foo.bar.company" to "https://foo.bar.com"', function () {
+    cs_utils.originMatch("https://foo2.bar.company", "https://foo.bar.com").should.equal(false);
+  });
+
+  it('does not match "https://foo.bar.com" to "https://foo.bar.company"', function () {
+    cs_utils.originMatch("https://foo2.bar.com", "https://foo.bar.company").should.equal(false);
+  });
+
+  it('matches "https://foo.bar.com" to "https://foo.bar.company"', function () {
+    cs_utils.originMatch("https://foo2.bar.com", "https://foo.bar.company").should.equal(false);
+  });
+
+  it('matches "https://foo2.bar.com" to "https://*.bar.com"', function () {
+    cs_utils.originMatch("https://foo2.bar.com", "https://*.bar.com").should.equal(true);
+  });
+
+  it('matches "https://foo2.2.bar.com" to "https://*.bar.com"', function () {
+    cs_utils.originMatch("https://foo2.2.bar.com", "https://*.bar.com").should.equal(true);
+  });
+
+  it('does not match "https://foo2.2-.bar.com" to "https://*.bar.com"', function () {
+    cs_utils.originMatch("https://foo2.2-.bar.com", "https://*.bar.com").should.equal(false);
+  });
+
+  it('does not match "https://foo.bar.company" to "https://*.bar.com"', function () {
+    cs_utils.originMatch("https://foo.bar.company", "https://*.bar.com").should.equal(false);
+  });
+
+
+});
