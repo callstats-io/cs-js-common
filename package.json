@@ -1,6 +1,5 @@
 {
-  "name": "cs-js-common",
-  "private": true,
+  "name": "callstats-common",
   "version": "0.2.0",
   "description": "A common utility library for node projects within csio.",
   "main": "index.js",
@@ -20,10 +19,7 @@
     "common"
   ],
   "author": "support@callstats.io",
-  "license":  {
-    "type": "MIT",
-    "url": "https://github.com/brentertz/scapegoat/blob/master/LICENSE-MIT"
-  },
+  "license":  "MIT",
   "bugs": {
     "url": "https://github.com/callstats-io/cs-js-common/issues"
   },
