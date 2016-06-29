@@ -42,15 +42,20 @@ function originMatch(givenOrigin, allowedOrigins) {
         allowedOriginsList = [allowedOrigins];
     }
     for (i = allowedOriginsList.length - 1; i >= 0; i--) {
-        if (allowedOriginsList[i].indexOf('*') === -1) {
+        var allowedOrigin = allowedOriginsList[i].trim();
+        while (allowedOrigin.endsWith('/')) {
+            // if the configured originURL ends with a '/', remove it
+            allowedOrigin = allowedOrigin.slice(0, allowedOrigin.length-1);
+        }
+        if (allowedOrigin.indexOf('*') === -1) {
             // no wildcard, so just check if they are same
-            if (allowedOriginsList[i] === givenOrigin) {
+            if (allowedOrigin === givenOrigin) {
                 return true;
             }
             continue;
         }
         //*.foo.bar matches a.b.c.foo.bar
-        origin = "^" + allowedOriginsList[i].replace('*.', "(([a-z0-9][a-z0-9_-]*[a-z0-9]|[a-z0-9]).)+").replace(/\//g, "\\/").replace(/\./g, "\\.") + "$";
+        origin = "^" + allowedOrigin.replace('*.', "(([a-z0-9][a-z0-9_-]*[a-z0-9]|[a-z0-9]).)+").replace(/\//g, "\\/").replace(/\./g, "\\.") + "$";
         if (new RegExp(origin).test(givenOrigin)) {
             return true;
         }

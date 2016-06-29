@@ -78,6 +78,14 @@ describe("#originMatch", function() {
     cs_utils.originMatch("https://foo.bar.com", "https://foo.bar.com").should.equal(true);
   });
 
+  it('matches "https://foo.bar.com" to "https://foo.bar.com/"', function () {
+    cs_utils.originMatch("https://foo.bar.com", "https://foo.bar.com/").should.equal(true);
+  });
+
+  it('matches "https://foo.bar.com" to "https://foo.bar.com///"', function () {
+    cs_utils.originMatch("https://foo.bar.com", "https://foo.bar.com///").should.equal(true);
+  });
+
   it('does not match "https://foo2.bar.com" to "https://foo.bar.com"', function () {
     cs_utils.originMatch("https://foo2.bar.com", "https://foo.bar.com").should.equal(false);
   });
@@ -102,7 +110,7 @@ describe("#originMatch", function() {
     cs_utils.originMatch("https://foo2.bar.com", "https://foo.bar.company").should.equal(false);
   });
 
-  it('matches "https://foo.bar.com" to "https://foo.bar.company"', function () {
+  it('does not match "https://foo.bar.com" to "https://foo.bar.company"', function () {
     cs_utils.originMatch("https://foo2.bar.com", "https://foo.bar.company").should.equal(false);
   });
 
